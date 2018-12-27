@@ -1,9 +1,10 @@
-package common.api;
+package com.climate.saein.common.api;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
-import common.conf.Type;
+
+import com.climate.saein.common.conf.Type;
 
 public class ClimateRESTAPI {
 

@@ -1,4 +1,4 @@
-package common.conf;
+package com.climate.saein.common.conf;
 
 public enum Type {
 
