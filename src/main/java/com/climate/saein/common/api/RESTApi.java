@@ -12,9 +12,12 @@ import com.climate.saein.common.conf.Type;
 public class RESTApi {
 
 	public String restClimateClient(String city) throws Exception{
+		EncryptKey enc = new EncryptKey();
 		String serviceKey = URLEncoder.encode(Type.SERVICE_KEY.getValue(),"UTF-8");
+		String parameter = enc.returnEncKey(serviceKey, "sidoName="+city+"&pageNo=1&numOfRows=10&ver=1.3");
 		String addr
-		= Type.REGION_REAL_API.getValue() + "?sidoName="+city+"&pageNo=1&numOfRows=10&ServiceKey=" + serviceKey + "&ver=1.3";
+		= Type.REGION_REAL_API.getValue() + "?ServiceKey=" + serviceKey + parameter;
+		
 		String data;
 		URL url = new URL(addr);
 		InputStream in = url.openStream();
@@ -26,4 +29,5 @@ public class RESTApi {
 		System.out.println("DATAs::" + cos.getOut().toString());
 		return data;
 	}
+	
 }
