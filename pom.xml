@@ -26,13 +26,18 @@
 		    <artifactId>javax.servlet-api</artifactId>
 		    <scope>provided</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-jasper</artifactId>
+		    <version>9.0.14</version>
+		</dependency>
+		
 
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
 
     <build>
         <plugins>
