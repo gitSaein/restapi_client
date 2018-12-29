@@ -6,20 +6,21 @@ import java.net.URLEncoder;
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.io.CachedOutputStream;
 import org.springframework.beans.factory.annotation.Value;
-import com.climate.saein.common.type.APIType;
 
 public class DustRestApi {
 
-	@Value("${key.api.dust}") 
+	@Value("${api.dust.key}") 
 	String key;
+	
+	@Value("${api.dust.region.url}")
+	String url;
 	
 	public String restClimateClient(String city) throws Exception{
 		
 		EncryptExe enc = new EncryptExe();
 		String serviceKey = URLEncoder.encode(key,"UTF-8");
 		String parameter = enc.returnEncParamter(serviceKey, "sidoName="+city+"&pageNo=1&numOfRows=10&ver=1.3");
-		String addr
-		= APIType.REGION_REAL_API.getValue() + "?ServiceKey=" + serviceKey + parameter;
+		String addr = url + "?ServiceKey=" + serviceKey + parameter;
 		
 		String data;
 		URL url = new URL(addr);
