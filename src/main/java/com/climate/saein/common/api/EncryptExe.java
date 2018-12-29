@@ -2,7 +2,7 @@ package com.climate.saein.common.api;
 
 import iros.pubc.cmm.util.cipher.Cipher;
 
-public class EncryptKey {
+public class EncryptExe {
 
 	public String encrypt(String encType, String inData, String secKey) throws Exception {
 		try {
@@ -22,7 +22,7 @@ public class EncryptKey {
 		}
 	}
 	
-	public String returnEncKey(String key,String parameter){
+	public String returnEncParamter(String key,String parameter){
 		
 		String encType = "ARIA";
 		String inData = parameter;

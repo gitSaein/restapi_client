@@ -3,17 +3,17 @@ package com.climate.saein.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.climate.saein.common.api.RESTApi;
+import com.climate.saein.common.api.DustRestApi;
 
 @Controller
 public class GreetingController {
 	
-	RESTApi api = new RESTApi();
+	DustRestApi api = new DustRestApi();
 
 	@GetMapping("/greeting")
 	public String greeting() {
 			try {
-				api.restClimateClient("¼­¿ï");
+				api.restClimateClient("ï¿½ï¿½ï¿½ï¿½");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
