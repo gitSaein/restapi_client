@@ -13,10 +13,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = {"com.climate.saein.controller"})
+@ComponentScan(basePackages = {"com.climate.saein.*"})
+@PropertySource("classpath:config-dev.properties")
 public class MVCConfig implements WebMvcConfigurer {
-	
+
+/*	@Bean
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**")
+		.addResourceLocations("classpath:/");
+	}
+	*/
 	@Bean
 	public ViewResolver  templateResolver() {
 		InternalResourceViewResolver  re = new InternalResourceViewResolver();
@@ -27,17 +33,14 @@ public class MVCConfig implements WebMvcConfigurer {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
+		PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
+		pspc.setIgnoreUnresolvablePlaceholders(true);
+		return pspc;
 		
 	}
 	
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	
-	
-	
-	
-	
 	
 }
