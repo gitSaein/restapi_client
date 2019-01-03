@@ -17,12 +17,11 @@ import com.climate.saein.common.conf.APIType;
 public class TrendRestApi {
 
 	
-	public void trendRestReq(String url,String id,String key) {
+	public String trendRestReq(String url,String id,String key, String bodyData) {
 		
 		try {
 			
 			URL apiURL = new URL(url);
-            String body = "{\"startDate\":\"2017-01-01\",\"endDate\":\"2017-04-30\",\"timeUnit\":\"month\",\"keywordGroups\":[{\"groupName\":\"한글\",\"keywords\":[\"한글\",\"korean\"]},{\"groupName\":\"영어\",\"keywords\":[\"영어\",\"english\"]}],\"device\":\"pc\",\"ages\":[\"1\",\"2\"],\"gender\":\"f\"}";
 			HttpsURLConnection con = (HttpsURLConnection)apiURL.openConnection();
 			con.setRequestMethod(APIType.REQ_METHOD_POST.getValue());
 			con.setRequestProperty(APIType.API_CONTENTS_ID.getValue(), id);
@@ -31,7 +30,7 @@ public class TrendRestApi {
 			con.setDoOutput(true);
 			
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			wr.writeBytes(body);
+			wr.writeBytes(bodyData);
 			wr.flush();
 			wr.close();
 			
@@ -48,6 +47,6 @@ public class TrendRestApi {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		return "responseCode"; 
 	}
 }

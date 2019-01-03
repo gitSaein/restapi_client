@@ -24,7 +24,6 @@ public class ContentsController {
 	
 	@RequestMapping("/contents")
 	public String mainContents(String str){
-		tApi.trendRestReq(url, id, key);
 		return "contnetsSearch";
 	}
 }

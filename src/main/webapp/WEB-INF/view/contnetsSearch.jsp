@@ -19,11 +19,14 @@ table, th, td {
 	    
 	  } );
 	  function contnetsSearchFunction(form){
-		  var formData = $("#" + form ).selialize();
+		  var formData = $("#" + form ).serialize();
+		  
 		  $.ajax({
-			  method: "POST" ,
+			  method: "POST",
 			  url:"/rest/search/contents",
-			  data: formData
+			  data: formData,
+			  dataType: "json",
+			  contentType: "application/x-www-form-urlencoded; charset=UTF-8"
 		  })
 		  .done(function(){
 			  
@@ -61,7 +64,7 @@ table, th, td {
 				<th>주제어</th>
 				<td><input name="groupName" type="text"/></td>
 				<th>주제어에 해당하는 검색어</th>
-				<td><input name="keywords" type="text"/></td>
+				<td><input name="keyword" type="text"/></td>
 			</tr>
 		</table>
 	</form>

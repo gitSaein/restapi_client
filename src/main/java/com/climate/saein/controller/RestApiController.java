@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,8 @@ public class RestApiController {
 	ContentsService contentsService;
 	
 	@PostMapping("/search/contents")
-	public ResponseEntity<ContentsDto> searchMain(@RequestBody ContentsDto dto) {
+	public ResponseEntity<ContentsDto> searchMain(@ModelAttribute ContentsDto dto) {
+
 		contentsService.searchContents(dto, url, id, key);
 		return new ResponseEntity<ContentsDto>(dto, HttpStatus.OK);
 	}

@@ -1,15 +1,28 @@
 package com.climate.saein.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.List;
 
-@Setter @Getter
+import org.apache.cxf.common.util.StringUtils;
+
+import lombok.Data;
+
+@Data
 public class ContentsDto {
-
+	
 	private String startDate;
 	private String endDate;
 	private String timeUnit;
-	private String[] keywordGroups;
+	private List<KeywordDto> keywordGroups;
 	private String groupName;
+	private String keyword;
 	private String[] keywords;
+	
+	public void setArrKeywords(String keyword) {
+		this.keywords = StringUtils.split(keyword,",");
+	}
+	
+	public void setGroup(List<KeywordDto> keywordGroups) {
+		this.keywordGroups = keywordGroups;
+	}
+	
 }
