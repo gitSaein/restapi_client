@@ -9,18 +9,22 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.apache.log4j.*;
 import org.springframework.stereotype.Component;
 
 import com.climate.saein.common.conf.APIType;
+import com.climate.saein.dto.ContentsDto;
+import com.google.gson.Gson;
 
 @Component
 public class TrendRestApi {
 
+	private static Logger log = Logger.getLogger(TrendRestApi.class);
 	
 	public String trendRestReq(String url,String id,String key, String bodyData) {
 		
 		try {
-			
+			String result;
 			URL apiURL = new URL(url);
 			HttpsURLConnection con = (HttpsURLConnection)apiURL.openConnection();
 			con.setRequestMethod(APIType.REQ_METHOD_POST.getValue());
@@ -29,16 +33,18 @@ public class TrendRestApi {
 			con.setRequestProperty("Content-Type", APIType.TYPE_JSON.getValue());
 			con.setDoOutput(true);
 			
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			try(DataOutputStream wr = new DataOutputStream(con.getOutputStream());){
 			wr.writeBytes(bodyData);
-			wr.flush();
-			wr.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
 			
-			int responseCode = con.getResponseCode();
-			System.out.println("[API RETURN]: " + responseCode);
+			System.out.println("[API RETURN]: " + con.getResponseCode());
 			
 			try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));){
-				br.lines().forEach(System.out::println);
+				result = br.readLine();
+				System.out.println("[API RETURN VALUE] " + result);
+				this.jsonToDto(result);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -48,5 +54,11 @@ public class TrendRestApi {
 			e.printStackTrace();
 		}
 		return "responseCode"; 
+	}
+	
+	ContentsDto jsonToDto(String json) {
+		Gson gson = new Gson();
+		ContentsDto dto =  gson.fromJson(json, ContentsDto.class);
+		return dto;
 	}
 }

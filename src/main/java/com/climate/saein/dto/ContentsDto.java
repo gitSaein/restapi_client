@@ -13,7 +13,7 @@ public class ContentsDto {
 	private String endDate;
 	private String timeUnit;
 	private List<KeywordDto> keywordGroups;
-	private List<KeywordDto> results;
+	private List<Object> results;
 	private String groupName;
 	private String keyword;
 	private String[] keywords;
