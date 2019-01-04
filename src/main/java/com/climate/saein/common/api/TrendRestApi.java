@@ -24,7 +24,6 @@ public class TrendRestApi {
 	public String trendRestReq(String url,String id,String key, String bodyData) {
 		
 		try {
-			String result;
 			URL apiURL = new URL(url);
 			HttpsURLConnection con = (HttpsURLConnection)apiURL.openConnection();
 			con.setRequestMethod(APIType.REQ_METHOD_POST.getValue());
@@ -34,17 +33,15 @@ public class TrendRestApi {
 			con.setDoOutput(true);
 			
 			try(DataOutputStream wr = new DataOutputStream(con.getOutputStream());){
-			wr.writeBytes(bodyData);
+			   wr.writeBytes(bodyData);
+			   log.info("[API RETURN]: " + con.getResponseCode());
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
 			
-			System.out.println("[API RETURN]: " + con.getResponseCode());
 			
 			try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));){
-				result = br.readLine();
-				System.out.println("[API RETURN VALUE] " + result);
-				this.jsonToDto(result);
+				this.jsonToDto(br.readLine());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
