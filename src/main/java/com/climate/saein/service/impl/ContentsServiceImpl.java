@@ -19,7 +19,7 @@ public class ContentsServiceImpl implements ContentsService{
 	TrendRestApi tApi;
 	
 	@Override
-	public List<ContentsDto> searchContents(ContentsDto dto ,String url,String id, String key) {
+	public ContentsDto searchContents(ContentsDto dto ,String url,String id, String key) {
 		Gson gson = new Gson();
 		List<KeywordDto> listKeyGroup = new ArrayList<KeywordDto>();
 		KeywordDto inDto  = new KeywordDto();
@@ -30,9 +30,7 @@ public class ContentsServiceImpl implements ContentsService{
 		listKeyGroup.add(inDto);
 		dto.setKeywordGroups(listKeyGroup);
 		dto.setGroup(listKeyGroup);
-		
-		tApi.trendRestReq(url, id, key, gson.toJson(dto));
-		return null;
+		return tApi.trendRestReq(url, id, key, gson.toJson(dto));
 	}
 
 }

@@ -28,11 +28,12 @@ table, th, td {
 			  dataType: "json",
 			  contentType: "application/x-www-form-urlencoded; charset=UTF-8"
 		  })
-		  .done(function(){
-			  
+		  .done(function(data){
+			  alert("ok");
+			  $("#outStartDate").append(""data.startDate);
 		  })
 		  .fail(function(){
-			  
+			  alert("error");
 		  });
 	  }
 	</script>
@@ -69,6 +70,13 @@ table, th, td {
 		</table>
 	</form>
 	<button onclick='contnetsSearchFunction("contnetsForm")'>검색</button>
+	<table>
+	   <thead>
+		    <tr>
+		      <th id="outStartDate"></th>
+		    </tr>
+ 	   </thead>
+	</table>
 
 
 </body>

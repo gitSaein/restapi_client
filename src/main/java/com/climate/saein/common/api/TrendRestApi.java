@@ -21,8 +21,9 @@ public class TrendRestApi {
 
 	private static Logger log = Logger.getLogger(TrendRestApi.class);
 	
-	public String trendRestReq(String url,String id,String key, String bodyData) {
+	public ContentsDto trendRestReq(String url,String id,String key, String bodyData) {
 		
+		ContentsDto dto = new ContentsDto();
 		try {
 			URL apiURL = new URL(url);
 			HttpsURLConnection con = (HttpsURLConnection)apiURL.openConnection();
@@ -41,7 +42,7 @@ public class TrendRestApi {
 			
 			
 			try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));){
-				this.jsonToDto(br.readLine());
+				dto = this.jsonToDto(br.readLine());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -50,7 +51,7 @@ public class TrendRestApi {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "responseCode"; 
+		return dto; 
 	}
 	
 	ContentsDto jsonToDto(String json) {
