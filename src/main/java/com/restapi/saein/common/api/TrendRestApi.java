@@ -30,7 +30,7 @@ public class TrendRestApi {
 			con.setRequestMethod(APIType.REQ_METHOD_POST.getValue());
 			con.setRequestProperty(APIType.API_CONTENTS_ID.getValue(), id);
 			con.setRequestProperty(APIType.API_CONTENTS_KEY.getValue(), key);
-			con.setRequestProperty("Content-Type", APIType.TYPE_JSON.getValue());
+			con.setRequestProperty("Content-Type", APIType.CONTENT_TYPE.getValue());
 			con.setDoOutput(true);
 			
 			try(DataOutputStream wr = new DataOutputStream(con.getOutputStream());){

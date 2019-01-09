@@ -29,8 +29,23 @@ table, th, td {
 			  contentType: "application/x-www-form-urlencoded; charset=UTF-8"
 		  })
 		  .done(function(data){
-			  alert("ok");
-			  $("#outStartDate").append("<th>" + data.startDate + "~" + data.endDate + "</th>");
+			  
+			  $("#outStartDate").append(data.startDate);
+			  $("#outEndDate").append(data.endDate);
+			  $("#outTimeUnit").append(data.timeUnit);
+
+			  $("#tableSContents tr").remove();
+			  $.each(data.results, function (index, value){
+				  $.each(value.data, function(index, items){
+					  var row  = "<tr>";
+					      row += "<td>" + items.period + "</td>";
+					      row += "<td>" + items.ratio  + "</td>";
+					      row += "</tr>";
+					  $("#tableSContents").append(row);
+
+				  });
+
+			  });
 		  })
 		  .fail(function(){
 			  alert("error");
@@ -75,17 +90,26 @@ table, th, td {
 	<button onclick='contnetsSearchReqFunction("contnetsForm")'>검색</button>
 	<table>
 	   <thead>
-		    <tr>
-		    	<th>No.</th>
+		   <tr>
 		        <th>조회 기간 시작 날짜</th>
+		        <td id = "outStartDate"></td>
+		   </tr>
+	       <tr>
 		        <th>조회 기간 종료 날짜</th>
+		        <td id = "outEndDate"></td>
+		   </tr>
+		   <tr>
 		        <th>구간 단위</th>
-		    	<th>주제어</th>
-		    	<th>주제어에 해당하는 검색어</th>
+		        <td id = "outTimeUnit"></td>
+		   </tr>
+		   <tr>
 		    	<th>구간별 period</th>
 		    	<th>검색 ratio</th>
 		   </tr>
  	   </thead>
+ 	   <tbody id="tableSContents">
+ 	   		<tr><td colspan="2">검색된 데이터가 없습니다.</td></tr>
+ 	   </tbody>
 	</table>
 
 

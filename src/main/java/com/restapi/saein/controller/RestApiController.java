@@ -28,7 +28,7 @@ public class RestApiController {
 	@Autowired
 	ContentsService contentsService;
 	
-	@PostMapping("/search/contents")
+	@PostMapping(value = "/search/contents",  produces = "application/json; charset=utf8")
 	public ResponseEntity<ContentsDto> searchMain(@ModelAttribute ContentsDto dto) {
 		return new ResponseEntity<ContentsDto>(contentsService.searchContents(dto, url, id, key), HttpStatus.OK);
 	}
