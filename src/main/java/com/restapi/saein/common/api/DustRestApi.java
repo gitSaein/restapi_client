@@ -1,4 +1,4 @@
-package com.climate.saein.common.api;
+package com.restapi.saein.common.api;
 
 import java.io.InputStream;
 import java.net.URL;

@@ -1,10 +1,10 @@
-package com.climate.saein.controller;
+package com.restapi.saein.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.climate.saein.common.api.DustRestApi;
+import com.restapi.saein.common.api.DustRestApi;
 
 @Controller
 public class GreetingController {

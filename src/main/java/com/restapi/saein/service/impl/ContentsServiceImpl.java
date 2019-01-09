@@ -1,4 +1,4 @@
-package com.climate.saein.service.impl;
+package com.restapi.saein.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.climate.saein.common.api.TrendRestApi;
-import com.climate.saein.dto.ContentsDto;
-import com.climate.saein.dto.KeywordDto;
-import com.climate.saein.service.ContentsService;
 import com.google.gson.Gson;
+import com.restapi.saein.common.api.TrendRestApi;
+import com.restapi.saein.dto.ContentsDto;
+import com.restapi.saein.dto.KeywordDto;
+import com.restapi.saein.service.ContentsService;
 
 @Service
 public class ContentsServiceImpl implements ContentsService{

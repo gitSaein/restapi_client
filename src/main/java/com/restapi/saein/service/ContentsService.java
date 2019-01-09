@@ -1,6 +1,6 @@
-package com.climate.saein.service;
+package com.restapi.saein.service;
 
-import com.climate.saein.dto.ContentsDto;
+import com.restapi.saein.dto.ContentsDto;
 
 public interface ContentsService {
 

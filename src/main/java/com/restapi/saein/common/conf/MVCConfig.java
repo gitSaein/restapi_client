@@ -1,4 +1,4 @@
-package com.climate.saein.common.conf;
+package com.restapi.saein.common.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

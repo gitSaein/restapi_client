@@ -1,4 +1,4 @@
-package com.climate.saein.dto;
+package com.restapi.saein.dto;
 
 import lombok.Data;
 

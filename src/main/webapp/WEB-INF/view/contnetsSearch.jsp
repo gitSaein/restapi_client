@@ -18,8 +18,8 @@ table, th, td {
 		  $( ".date_contents" ).datepicker({dateFormat : 'yy-mm-dd'});
 	    
 	  } );
-	  function contnetsSearchFunction(form){
-		  var formData = $("#" + form ).serialize();
+	  function contnetsSearchReqFunction(form){
+		  var formData = decodeURIComponent($("#" + form ).serialize());
 		  
 		  $.ajax({
 			  method: "POST",
@@ -30,11 +30,14 @@ table, th, td {
 		  })
 		  .done(function(data){
 			  alert("ok");
-			  $("#outStartDate").append(""data.startDate);
+			  $("#outStartDate").append("<th>" + data.startDate + "~" + data.endDate + "</th>");
 		  })
 		  .fail(function(){
 			  alert("error");
 		  });
+	  }
+	  function makeTable(){
+		  
 	  }
 	</script>
 </head>
@@ -69,12 +72,19 @@ table, th, td {
 			</tr>
 		</table>
 	</form>
-	<button onclick='contnetsSearchFunction("contnetsForm")'>검색</button>
+	<button onclick='contnetsSearchReqFunction("contnetsForm")'>검색</button>
 	<table>
 	   <thead>
 		    <tr>
-		      <th id="outStartDate"></th>
-		    </tr>
+		    	<th>No.</th>
+		        <th>조회 기간 시작 날짜</th>
+		        <th>조회 기간 종료 날짜</th>
+		        <th>구간 단위</th>
+		    	<th>주제어</th>
+		    	<th>주제어에 해당하는 검색어</th>
+		    	<th>구간별 period</th>
+		    	<th>검색 ratio</th>
+		   </tr>
  	   </thead>
 	</table>
 

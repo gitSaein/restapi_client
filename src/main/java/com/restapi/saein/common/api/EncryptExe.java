@@ -1,4 +1,4 @@
-package com.climate.saein.common.api;
+package com.restapi.saein.common.api;
 
 import iros.pubc.cmm.util.cipher.Cipher;
 

@@ -1,11 +1,11 @@
-package com.climate.saein.controller;
+package com.restapi.saein.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.climate.saein.common.api.TrendRestApi;
+import com.restapi.saein.common.api.TrendRestApi;
 
 @Controller
 public class ContentsController {

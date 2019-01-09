@@ -1,4 +1,4 @@
-package com.climate.saein.controller;
+package com.restapi.saein.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climate.saein.dto.ContentsDto;
-import com.climate.saein.service.ContentsService;
+import com.restapi.saein.dto.ContentsDto;
+import com.restapi.saein.service.ContentsService;
 
 @RestController
 @RequestMapping("/rest")

@@ -1,4 +1,4 @@
-package com.climate.saein.common.api;
+package com.restapi.saein.common.api;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -12,9 +12,9 @@ import javax.net.ssl.HttpsURLConnection;
 import org.apache.log4j.*;
 import org.springframework.stereotype.Component;
 
-import com.climate.saein.common.conf.APIType;
-import com.climate.saein.dto.ContentsDto;
 import com.google.gson.Gson;
+import com.restapi.saein.common.conf.APIType;
+import com.restapi.saein.dto.ContentsDto;
 
 @Component
 public class TrendRestApi {
