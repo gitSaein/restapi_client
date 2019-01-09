@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.climate.saein.*"})
+@ComponentScan(basePackages = {"com.restapi.saein.*"})
 @PropertySource("classpath:config-dev.properties")
 public class MVCConfig implements WebMvcConfigurer {
 
