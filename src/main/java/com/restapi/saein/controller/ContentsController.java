@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.restapi.saein.common.api.TrendRestApi;
+import com.restapi.saein.dto.User;
 
 @Controller
 public class ContentsController {
@@ -25,5 +26,10 @@ public class ContentsController {
 	@RequestMapping("/contents")
 	public String mainContents(String str){
 		return "contnetsSearch";
+	}
+	
+	@RequestMapping("/create/user")
+	public String createUser(User user) {
+		return "createUser";
 	}
 }
