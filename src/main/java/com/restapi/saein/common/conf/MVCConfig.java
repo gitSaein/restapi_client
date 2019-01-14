@@ -25,12 +25,7 @@ import com.restapi.saein.common.filter.MainFilter;
 public class MVCConfig implements WebMvcConfigurer {
 
 	private @Autowired AutowireCapableBeanFactory beanFactory;
-/*	@Bean
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**")
-		.addResourceLocations("classpath:/");
-	}
-	*/
+	
 	@Bean
 	public ViewResolver  templateResolver() {
 		InternalResourceViewResolver  re = new InternalResourceViewResolver();
@@ -57,8 +52,15 @@ public class MVCConfig implements WebMvcConfigurer {
 		Filter mainFilter = new MainFilter();
 		beanFactory.autowireBean(mainFilter);
 		registration.setFilter(mainFilter);
-		registration.addUrlPatterns("/*");
+		registration.addUrlPatterns("/filter/*");
+		//registration.addInitParameter("encoding", "UTF-8");
 		return registration;
 	}
+	/*	@Bean
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**")
+		.addResourceLocations("classpath:/");
+	}
+	*/
 	
 }
