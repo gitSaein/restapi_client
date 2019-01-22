@@ -9,7 +9,8 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
@@ -19,7 +20,7 @@ import com.restapi.saein.dto.ContentsDto;
 @Component
 public class TrendRestApi {
 
-	private static Logger log = Logger.getLogger(TrendRestApi.class);
+	private static Logger log = LoggerFactory.getLogger(TrendRestApi.class);
 	
 	public ContentsDto trendRestReq(String url,String id,String key, String bodyData) {
 		

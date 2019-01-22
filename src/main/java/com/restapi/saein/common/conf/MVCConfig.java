@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,6 +23,7 @@ import com.restapi.saein.common.filter.MainFilter;
 @Configuration
 @ComponentScan(basePackages = {"com.restapi.saein.*"})
 @PropertySource("classpath:config-dev.properties")
+@EnableJpaRepositories(basePackages = {"com.restapi.saein.repository"})
 public class MVCConfig implements WebMvcConfigurer {
 
 	private @Autowired AutowireCapableBeanFactory beanFactory;
@@ -56,11 +58,5 @@ public class MVCConfig implements WebMvcConfigurer {
 		//registration.addInitParameter("encoding", "UTF-8");
 		return registration;
 	}
-	/*	@Bean
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**")
-		.addResourceLocations("classpath:/");
-	}
-	*/
 	
 }

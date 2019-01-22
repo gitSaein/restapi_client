@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restapi.saein.dto.ContentsDto;
+import com.restapi.saein.dto.UserDto;
 import com.restapi.saein.service.ContentsService;
 
 @RestController
@@ -32,4 +33,10 @@ public class RestApiController {
 	public ResponseEntity<ContentsDto> searchMain(@ModelAttribute ContentsDto dto) {
 		return new ResponseEntity<ContentsDto>(contentsService.searchContents(dto, url, id, key), HttpStatus.OK);
 	}
+	
+	@PostMapping(value = "/create/user")
+	public ResponseEntity<UserDto> createUser(@ModelAttribute UserDto dto){
+		return new ResponseEntity<UserDto>(dto, HttpStatus.OK);
+	}
+	
 }

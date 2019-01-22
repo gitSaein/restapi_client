@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.restapi.saein.common.api.TrendRestApi;
-import com.restapi.saein.dto.User;
+import com.restapi.saein.dto.UserDto;
 
 @Controller
 public class ContentsController {
@@ -29,7 +29,7 @@ public class ContentsController {
 	}
 	
 	@RequestMapping("/create/user")
-	public String createUser(User user) {
+	public String createUser(UserDto user) {
 		return "createUser";
 	}
 }
