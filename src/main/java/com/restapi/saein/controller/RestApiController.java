@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.restapi.saein.dto.ContentsDto;
 import com.restapi.saein.dto.UserDto;
+import com.restapi.saein.repository.UserRepository;
 import com.restapi.saein.service.ContentsService;
 
 @RestController
@@ -27,7 +28,10 @@ public class RestApiController {
 	private String key;
 	
 	@Autowired
-	ContentsService contentsService;
+	private ContentsService contentsService;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	@PostMapping(value = "/search/contents",  produces = "application/json; charset=utf8")
 	public ResponseEntity<ContentsDto> searchMain(@ModelAttribute ContentsDto dto) {
@@ -36,7 +40,7 @@ public class RestApiController {
 	
 	@PostMapping(value = "/create/user")
 	public ResponseEntity<UserDto> createUser(@ModelAttribute UserDto dto){
-		return new ResponseEntity<UserDto>(dto, HttpStatus.OK);
+		return new ResponseEntity<UserDto>(userRepository.save(dto), HttpStatus.OK);
 	}
 	
 }

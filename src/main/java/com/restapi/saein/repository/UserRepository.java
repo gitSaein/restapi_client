@@ -1,17 +1,11 @@
 package com.restapi.saein.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.restapi.saein.dto.UserDto;
 
-public interface UserRepository extends JpaRepository<UserDto, Long>{
-
-	@Query("select * from tb_user")
-	List<UserDto> findAllUser();
+@Repository
+public interface UserRepository extends CrudRepository<UserDto, Long>{
 	
-	@Query
-	UserDto createUser(UserDto dto);
 }
